@@ -11,11 +11,6 @@ function Dashboard() {
   const [editingTask, setEditingTask] = useState(null);
   const navigate = useNavigate();
 
-  // Page load aana udane tasks fetch pannurathukku
-  useEffect(() => {
-    fetchTasks();
-  }, [filter]);
-
   const fetchTasks = async () => {
     try {
       const params = filter !== "All" ? { status: filter } : {};
@@ -27,6 +22,13 @@ function Dashboard() {
       }
     }
   };
+
+  // Page load aana udane tasks fetch pannurathukku
+  useEffect(() => {
+    //eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
   const handleAddOrUpdate = async (e) => {
     e.preventDefault();
@@ -42,7 +44,7 @@ function Dashboard() {
       setTitle("");
       setDescription("");
       fetchTasks();
-    } catch (err) {
+    } catch {
       alert("Something went wrong");
     }
   };
