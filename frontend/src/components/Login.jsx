@@ -23,7 +23,12 @@ function Login() {
       });
 
       localStorage.setItem("token", response.data.access_token);
+
+      console.log("Token saved:", localStorage.getItem("token"));
+
       navigate("/dashboard");
+
+console.log("navigate() called");
     } catch (err) {
       setError(err.response?.data?.detail || "Login failed");
     }
