@@ -200,6 +200,16 @@ The project includes:
 - Frontend workflow
 - Automatic build verification
 
+
+## Deployment Strategy
+
+Continuous Deployment is handled natively by Render and Vercel — both platforms are connected directly to the `main` branch and automatically redeploy on every push/merge. GitHub Actions handles Continuous Integration (linting, build verification) before code reaches `main`.
+
+## Note on Backups
+
+This project uses MongoDB Atlas's free M0 tier, which does not support automated backups (available only on paid tiers M10+). In a production environment, upgrading to a paid tier would enable continuous backups and point-in-time recovery.
+
+
 ## Key Challenges Solved
 
 - Fixed a bcrypt/passlib version incompatibility causing authentication failures in production
