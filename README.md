@@ -67,18 +67,23 @@ graph TD
     A[User Browser] -->|HTTPS| B[Frontend - React/Vite<br/>Hosted on Vercel]
     B -->|REST API calls<br/>Axios + JWT| C[Backend - FastAPI<br/>Hosted on Render]
     C -->|PyMongo| D[(MongoDB Atlas)]
-    
-    E[GitHub Repository] -->|Push triggers| F[GitHub Actions CI/CD]
-    F -->|Build & Test| G[Backend Docker Image]
-    F -->|Build & Test| H[Frontend Docker Image]
+
+    E[GitHub Repository] -->|Push triggers auto-deploy| F[Vercel Build]
+    E -->|Push triggers auto-deploy| G[Render Build]
+    F -.->|Deploy| B
     G -.->|Deploy| C
-    H -.->|Deploy| B
-    
+
+    H[Local Dev] -->|docker compose up| I[Backend Container]
+    H -->|docker compose up| J[Frontend Container<br/>nginx]
+
     style B fill:#61dafb,color:#000
     style C fill:#009688,color:#fff
     style D fill:#47A248,color:#fff
-    style F fill:#2088FF,color:#fff
+    style E fill:#333,color:#fff
+    style F fill:#000,color:#fff
+    style G fill:#46E3B7,color:#000
 ```
+   
 
 
 
