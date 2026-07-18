@@ -8,7 +8,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "tasktrack-one.vercel.app",
+        "https://tasktrack-one.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
